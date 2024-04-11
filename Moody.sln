@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moody", "Moody\Moody.csproj", "{CF35047B-C873-4F49-BF90-ABB61AFED1E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moody.Data", "Moody.Data\Moody.Data.csproj", "{7DEA6BBB-845F-4726-8DBA-1DD1F5C2A086}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF35047B-C873-4F49-BF90-ABB61AFED1E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF35047B-C873-4F49-BF90-ABB61AFED1E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF35047B-C873-4F49-BF90-ABB61AFED1E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF35047B-C873-4F49-BF90-ABB61AFED1E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DEA6BBB-845F-4726-8DBA-1DD1F5C2A086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DEA6BBB-845F-4726-8DBA-1DD1F5C2A086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DEA6BBB-845F-4726-8DBA-1DD1F5C2A086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DEA6BBB-845F-4726-8DBA-1DD1F5C2A086}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E1FBD02-A4A5-45F7-8512-9D97BA918A23}
+	EndGlobalSection
+EndGlobal
