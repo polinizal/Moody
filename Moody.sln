@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moody", "Moody\Moody.csproj", "{CF35047B-C873-4F49-BF90-ABB61AFED1E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moody", "Moody\Moody.csproj", "{CF35047B-C873-4F49-BF90-ABB61AFED1E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moody.Data", "Moody.Data\Moody.Data.csproj", "{7DEA6BBB-845F-4726-8DBA-1DD1F5C2A086}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moody.Data", "Moody.Data\Moody.Data.csproj", "{7DEA6BBB-845F-4726-8DBA-1DD1F5C2A086}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moody.Services", "Moody.Services\Moody.Services.csproj", "{640CDFCD-41B2-49D4-A138-F599B8284380}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7DEA6BBB-845F-4726-8DBA-1DD1F5C2A086}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DEA6BBB-845F-4726-8DBA-1DD1F5C2A086}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DEA6BBB-845F-4726-8DBA-1DD1F5C2A086}.Release|Any CPU.Build.0 = Release|Any CPU
+		{640CDFCD-41B2-49D4-A138-F599B8284380}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{640CDFCD-41B2-49D4-A138-F599B8284380}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{640CDFCD-41B2-49D4-A138-F599B8284380}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{640CDFCD-41B2-49D4-A138-F599B8284380}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
