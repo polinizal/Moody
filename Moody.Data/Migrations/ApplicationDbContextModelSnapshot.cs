@@ -253,6 +253,8 @@ namespace Moody.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("MoodId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Dailies");
@@ -278,52 +280,52 @@ namespace Moody.Data.Migrations
                         new
                         {
                             Id = 1,
-                            MoodType = "Happy"
+                            MoodType = "Anxious"
                         },
                         new
                         {
                             Id = 2,
-                            MoodType = "Excited"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            MoodType = "Cheerful"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            MoodType = "Optimistic"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            MoodType = "Relaxed"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            MoodType = "Sad"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            MoodType = "Angry"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            MoodType = "Tired"
-                        },
-                        new
-                        {
-                            Id = 9,
                             MoodType = "Stressed"
                         },
                         new
                         {
+                            Id = 3,
+                            MoodType = "Tired"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            MoodType = "Angry"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            MoodType = "Sad"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            MoodType = "Relaxed"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            MoodType = "Optimistic"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            MoodType = "Cheerful"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            MoodType = "Excited"
+                        },
+                        new
+                        {
                             Id = 10,
-                            MoodType = "Anxious"
+                            MoodType = "Happy"
                         });
                 });
 
@@ -387,11 +389,19 @@ namespace Moody.Data.Migrations
 
             modelBuilder.Entity("Moody.Data.Data.Daily", b =>
                 {
+                    b.HasOne("Moody.Data.Data.Mood", "Mood")
+                        .WithMany()
+                        .HasForeignKey("MoodId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Moody.Data.Data.User", "User")
                         .WithMany("Dailies")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Mood");
 
                     b.Navigation("User");
                 });

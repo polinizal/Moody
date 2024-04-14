@@ -12,8 +12,8 @@ using Moody.Data;
 namespace Moody.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240413115751_DailyChange")]
-    partial class DailyChange
+    [Migration("20240414072700_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -243,7 +243,7 @@ namespace Moody.Data.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Mood")
+                    b.Property<int>("MoodId")
                         .HasColumnType("int");
 
                     b.Property<string>("Note")
@@ -255,6 +255,8 @@ namespace Moody.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MoodId");
 
                     b.HasIndex("UserId");
 
@@ -269,12 +271,65 @@ namespace Moody.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("MoodType")
-                        .HasColumnType("int");
+                    b.Property<string>("MoodType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Moods");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            MoodType = "Anxious"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            MoodType = "Stressed"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            MoodType = "Tired"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            MoodType = "Angry"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            MoodType = "Sad"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            MoodType = "Relaxed"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            MoodType = "Optimistic"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            MoodType = "Cheerful"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            MoodType = "Excited"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            MoodType = "Happy"
+                        });
                 });
 
             modelBuilder.Entity("Moody.Data.Data.User", b =>
@@ -337,11 +392,19 @@ namespace Moody.Data.Migrations
 
             modelBuilder.Entity("Moody.Data.Data.Daily", b =>
                 {
+                    b.HasOne("Moody.Data.Data.Mood", "Mood")
+                        .WithMany()
+                        .HasForeignKey("MoodId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Moody.Data.Data.User", "User")
                         .WithMany("Dailies")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Mood");
 
                     b.Navigation("User");
                 });

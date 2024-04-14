@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Moody.Data.Migrations
 {
     /// <inheritdoc />
@@ -57,7 +59,7 @@ namespace Moody.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MoodType = table.Column<int>(type: "int", nullable: false)
+                    MoodType = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -196,6 +198,23 @@ namespace Moody.Data.Migrations
                         principalTable: "Moods",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Moods",
+                columns: new[] { "Id", "MoodType" },
+                values: new object[,]
+                {
+                    { 1, "Anxious" },
+                    { 2, "Stressed" },
+                    { 3, "Tired" },
+                    { 4, "Angry" },
+                    { 5, "Sad" },
+                    { 6, "Relaxed" },
+                    { 7, "Optimistic" },
+                    { 8, "Cheerful" },
+                    { 9, "Excited" },
+                    { 10, "Happy" }
                 });
 
             migrationBuilder.CreateIndex(
