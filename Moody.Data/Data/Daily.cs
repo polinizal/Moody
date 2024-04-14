@@ -14,11 +14,11 @@ namespace Moody.Data.Data
 
         [ForeignKey(nameof(Mood))]
         public int MoodId { get; set; }
-        public virtual Mood Mood { get; set; }
 
         [ForeignKey(nameof(User))]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public virtual User User { get; set; }
+        public virtual Mood Mood { get; set; }
         public string Note { get; set; } // Note for the day
     }
 }

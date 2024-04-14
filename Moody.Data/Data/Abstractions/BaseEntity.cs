@@ -9,6 +9,8 @@ namespace Moody.Data.Data.Abstractions
 {
     public abstract class BaseEntity
     {
+        
+
         [Key]
         public int Id { get; set; }
     }
