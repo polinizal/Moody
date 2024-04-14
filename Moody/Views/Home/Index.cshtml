@@ -8,6 +8,7 @@
 <div class="text-center">
     <h1 class="display-4">Welcome, @User.Identity.Name.Split('@').FirstOrDefault()</h1>
     <p>Be in track of your daily moods and improve yourself every day!</p>
+        <button type="button" class="btn btn-outline-info m-2" onclick="location.href='@Url.Action("Create","Dailies")'"><i class="bi bi-plus-square"></i> Track Your Mood :)</button>
 </div>
 
     <div style="display: flex; justify-content: center;">
