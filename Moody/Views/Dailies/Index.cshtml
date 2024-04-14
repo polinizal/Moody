@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Moody.Services.DTOs.DailyDTO>
+
+@{
+    ViewData["Title"] = "Daily Mood Journal";
+}
+
+<h1>Daily Mood Journal</h1>
+
+<button type="button" class="btn btn-outline-info btn-sm" onclick="location.href='@Url.Action("Create","Dailies")'">
+    <i class="bi bi-plus-square"></i>  Track Your Mood
+</button>
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+           
+            <th >
+                @Html.DisplayNameFor(model => model.Mood.MoodType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th> *@
+            <th >
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+   
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+                <td style="border: 1px solid #fff;">
+                @Html.DisplayFor(modelItem => item.Mood.MoodType)
+            </td>
+                <td style="border: 1px solid #fff;">
+                    @item.CreationDate.ToString("MMM dd")
+                </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.User.Id)
+            </td> *@
+                <td style="border: 1px solid #fff;">
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+                <td style="border: 1px solid #fff;">
+                    <a asp-action="Edit" class="btn btn-outline-warning btn-sm" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" class="btn btn-outline-primary btn-sm"  asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" class="btn btn-outline-danger btn-sm" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<div id="chart_div"></div>
+<script type="text/javascript">
+    var dailies = @Json.Serialize(Model);
+    google.charts.load('current', { packages: ['corechart', 'bar'] });
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+
+
+        var info = [
+            ['Mood', '', { role: 'annotation' }],
+        ];
+        dailies.forEach(function (daily) {
+            info.push([daily.creationDate, daily.moodId, daily.mood.moodType]);
+        });
+
+
+        
+        console.log(info);
+
+        var data = google.visualization.arrayToDataTable(info);
+
+        
+
+        var options = {
+            title: 'Mood Journal Chart',
+            chartArea: { width: '100%' },
+            vAxis: {
+                title: 'Mood',
+                minValue: 0
+            },
+            hAxis: {
+                title: 'Date',
+                format: 'MMM dd'
+            }
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+    }
+</script>
+

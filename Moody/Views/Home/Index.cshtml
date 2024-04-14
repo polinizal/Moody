@@ -1,8 +1,16 @@
-﻿@{
+﻿@model Moody.Services.DTOs.DailyDTO
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
+<body>
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome, @User.Identity.Name.Split('@').FirstOrDefault()</h1>
+    <p>Be in track of your daily moods and improve yourself every day!</p>
 </div>
+
+    <div style="display: flex; justify-content: center;">
+    <img src="~/images/hd.png" alt="Moods" style="max-width: 60%"  />
+</div>
+</body>
